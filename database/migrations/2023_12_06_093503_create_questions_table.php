@@ -16,8 +16,7 @@ return new class extends Migration
             $table->text('question');
             $table->foreignId('question_type_id')->constrained('question_types');
             $table->foreignId('nfl_match_id')->constrained('nfl_matches')->nullable();
-            $table->foreignId('correct_answer_id')->constrained('correct_answers')->nullable();
-            $table->foreignId('survey_id')->constrained('surveys');
+            $table->foreignId('form_id')->constrained('forms');
             $table->timestamps();
             $table->softDeletes();
         });
