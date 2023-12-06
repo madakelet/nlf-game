@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('short_name')->unique();
-            $table->string('conference');
-            $table->string('division');
+            $table->string('group');
+            $table->integer('api_id');
+            $table->string('logo_url');
             $table->timestamps();
         });
     }
