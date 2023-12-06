@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import authRoutes from "./authRoutes";
 import defaultRoutes from "./defaultRoutes";
 import adminRoutes from "./adminRoutes";
+import { checkAuth, checkAdmin } from "./guards";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,6 +23,16 @@ const router = createRouter({
                 .scrollIntoView({ behavior: "smooth" });
         }
     },
+});
+
+router.beforeEach(async (to, from) => {
+    if (to.meta.requiresAuth) {
+        const isAuth = await checkAuth();
+        if (!isAuth) return "/";
+    } else if (to.meta.requiresAdmin) {
+        const isAdmin = await checkAdmin();
+        if (!isAdmin) return "/";
+    }
 });
 
 export default router;
