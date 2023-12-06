@@ -42,4 +42,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function team() 
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(UserResponse::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

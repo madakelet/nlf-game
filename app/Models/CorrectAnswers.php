@@ -11,4 +11,9 @@ class CorrectAnswers extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

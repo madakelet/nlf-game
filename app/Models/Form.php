@@ -11,4 +11,9 @@ class Form extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }   
 }
