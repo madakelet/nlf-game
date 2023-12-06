@@ -1,9 +1,36 @@
 // Variables
-@import 'variables';
+@import "variables";
+
+@import "./login";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
 * {
-    font-family: 'Roboto', sans-serif;    
+    font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+    background-color: rgb(255, 250, 245);
+}
+
+input {
+    color: blue;
+    background-color: transparent !important;
+    border-bottom: 1px solid green !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem !important;
+    outline: none;
+    &::placeholder {
+        color: green;
+        background-color: transparent;
+    }
+    &:focus {
+        outline: 0;
+        box-shadow: none !important;
+    }
 }
