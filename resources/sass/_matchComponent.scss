@@ -1,9 +1,10 @@
 .match-component {
     color: white !important;
     font-size: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #e2e8f0;  
-
+    border-radius: 0.4rem;
+    border: $transparentBorder;
+    box-shadow: $transparentBoxShadow;
+    transition: $transition;
     small {
         font-size: 0.7rem;
         color: #e2e8f0;

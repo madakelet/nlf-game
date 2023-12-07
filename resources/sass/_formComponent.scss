@@ -1,12 +1,12 @@
 .form-component {
     font-size: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #e2e8f0;
-    transition: all 0.2s ease-in-out;
+    border-radius: 0.4rem;
+    border: $transparentBorder;
+    box-shadow: $transparentBoxShadow;
+    transition: $transition;
     &:hover {
-        border: 1px solid #a0aec0;
-        transition: all 0.2s ease-in-out;
-        scale: 1.03;
+        transition: $transition;
+        scale: 1.04;
     }
 }
 
@@ -19,16 +19,28 @@
 
 .edit-question {
     font-size: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #e2e8f0;
-    transition: all 0.2s ease-in-out;
+    border-radius: 0.4rem;
+    border: $transparentBorder;
+    box-shadow: $transparentBoxShadow;
+    transition: $transition;
     padding: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-} 
+    position: relative;
+    &:hover {
+        scale: 1.04;
+    }
+    input {
+        border: 1px solid white !important;
+    }
+}
 
 .form-title {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+}
+
+.blury-bg {
+    filter: blur(13px);
 }
