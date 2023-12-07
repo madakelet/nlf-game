@@ -24,6 +24,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
 Route::get('/forms', [FormController::class, 'index']);
+Route::get('/form', [FormController::class, 'show']);
 
 Route::get('/matches', [MatchController::class, 'index']);
 

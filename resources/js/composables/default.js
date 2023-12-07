@@ -1,8 +1,9 @@
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 export default function useDefault() {
     const baseUrl = ref(window.location.origin);
     const router = useRouter();
+    const route = useRoute();
     const body = document.body;
     const html = document.documentElement;
 
@@ -21,6 +22,7 @@ export default function useDefault() {
     return {
         baseUrl,
         router,
+        route,
         redirect,
         toggleLoadingClass,
     };

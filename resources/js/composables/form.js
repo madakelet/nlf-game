@@ -5,8 +5,9 @@ export default function useForm() {
     const errors = ref([]);
     const loading = ref(false);
     const forms = ref([]);
-    const { toggleLoadingClass } = useDefault();
-    
+    const form = ref({});
+    const { toggleLoadingClass, route } = useDefault();
+
     const getForms = async () => {
         loading.value = true;
         toggleLoadingClass(loading.value);
@@ -20,11 +21,30 @@ export default function useForm() {
             toggleLoadingClass(loading.value);
         }
     };
-
+    const getForm = async () => {
+        loading.value = true;
+        errors.value = [];
+        toggleLoadingClass(loading.value);
+        try {
+            const response = await axios.get("/api/form", {
+                params: {
+                    id: route.params.id,
+                },
+            });
+            form.value = response.data;
+        } catch (err) {
+            errors.value = err.response.data.errors;
+        } finally {
+            loading.value = false;
+            toggleLoadingClass(loading.value);
+        }
+    };
     return {
         errors,
         loading,
         forms,
+        form,
         getForms,
+        getForm,
     };
 }

@@ -12,16 +12,19 @@ library.add(fab, fas, far);
 
 import LoadingSpinner from "./components/LoadingSpinner.vue";
 import HeaderComponent from "./components/HeaderComponent.vue"
-import FormComponent from "./components/FormComponent.vue"
+import FormListComponent from "./components/FormListComponent.vue"
 import MatchComponent from "./components/MatchComponent.vue"
-
+import EditQuestionComponent from "./components/EditQuestionComponent.vue"
+import InputComponent from "./components/InputComponent.vue"
 const app = createApp({
     extends: App,
 });
 app.component("font-awesome-icon", FontAwesomeIcon)
     .component("loading-spinner", LoadingSpinner)
     .component("header-component", HeaderComponent)
-    .component("form-component", FormComponent)
+    .component("form-component", FormListComponent)
     .component("match-component", MatchComponent)
+    .component("edit-question-component", EditQuestionComponent)
+    .component("input-component", InputComponent)
     .use(router)
     .mount("#app");

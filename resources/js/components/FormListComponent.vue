@@ -8,20 +8,27 @@
                 Kérdések száma: {{ form.questions.length }}
             </div>
             <div class="col-md-4 col-3 text-end">
-                <font-awesome-icon icon="edit" class="fa-icon mx-4"/>
+                <font-awesome-icon icon="edit" class="fa-icon mx-4" @click="redirect('EditForm', form.id)"/>
                 <font-awesome-icon icon="trash" class="fa-icon"/>
             </div>
         </div>
     </div>
 </template>
 <script>
+import useDefault from '../composables/default';
 export default {
-    name: "FormComponent",
+    name: "FormListComponent",
     props: {
         form: {
             type: Object,
             required: true,
         },
     },
+    setup() {
+        const { redirect } = useDefault();
+        return {
+            redirect
+        }
+    }
 };
 </script>
