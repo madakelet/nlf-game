@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             //TeamSeeder::class,
             //NflMatchSeeder::class,
             QuestionTypeSeeder::class,
+            WeekSeeder::class,
+            FormSeeder::class,
         ]);
     }
 }
