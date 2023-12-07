@@ -3,6 +3,7 @@
 
 @import "./login";
 @import "./header";
+@import "./matchComponent";
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
@@ -12,7 +13,7 @@
 
 html,
 body {
-    height: 100%;
+    color: white;
     background: -moz-radial-gradient(
             0% 100%,
             ellipse cover,
@@ -20,7 +21,7 @@ body {
             rgba(138, 114, 76, 0) 40%
         ),
         -moz-linear-gradient(top, $backgroundLightBlue, 0%, $backgroundGray 100%),
-        -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        -moz-linear-gradient(-45deg, #a04b4e 0%, #092756 100%);
     background: -webkit-radial-gradient(
             0% 100%,
             ellipse cover,
@@ -29,7 +30,7 @@ body {
         ),
         -webkit-linear-gradient(top, $backgroundLightBlue, 0%, $backgroundGray
                     100%),
-        -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        -webkit-linear-gradient(-45deg, #a04b4e 0%, #092756 100%);
     background: -o-radial-gradient(
             0% 100%,
             ellipse cover,
@@ -37,7 +38,7 @@ body {
             rgba(138, 114, 76, 0) 40%
         ),
         -o-linear-gradient(top, $backgroundLightBlue, 0%, $backgroundGray 100%),
-        -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        -o-linear-gradient(-45deg, #a04b4e 0%, #092756 100%);
     background: -ms-radial-gradient(
             0% 100%,
             ellipse cover,
@@ -46,7 +47,7 @@ body {
         ),
         -ms-linear-gradient(top, $backgroundLightBlue, 0%, rgba(42, 60, 87, 0.4)
                     100%),
-        -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        -ms-linear-gradient(-45deg, #a04b4e 0%, #092756 100%);
     background: -webkit-radial-gradient(
             0% 100%,
             ellipse cover,
@@ -59,7 +60,7 @@ body {
             0%,
             rgba(42, 60, 87, 0.4) 100%
         ),
-        linear-gradient(135deg, #670d10 0%, #092756 100%);
+        linear-gradient(135deg, #a04b4e 0%, #092756 100%);
 }
 
 input {
@@ -97,4 +98,8 @@ button {
         transition: all ease-in-out 0.1s;
         scale: 1.03;
     }
+}
+
+.loading {
+    height: 100%;
 }

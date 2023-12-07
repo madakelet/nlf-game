@@ -13,6 +13,7 @@ library.add(fab, fas, far);
 import LoadingSpinner from "./components/LoadingSpinner.vue";
 import HeaderComponent from "./components/HeaderComponent.vue"
 import FormComponent from "./components/FormComponent.vue"
+import MatchComponent from "./components/MatchComponent.vue"
 
 const app = createApp({
     extends: App,
@@ -21,5 +22,6 @@ app.component("font-awesome-icon", FontAwesomeIcon)
     .component("loading-spinner", LoadingSpinner)
     .component("header-component", HeaderComponent)
     .component("form-component", FormComponent)
+    .component("match-component", MatchComponent)
     .use(router)
     .mount("#app");

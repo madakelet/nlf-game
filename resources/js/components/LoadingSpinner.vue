@@ -36,7 +36,7 @@ export default {
   left: -50%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #383bdb 0%, #3220d7 100%) !important;
+  background: linear-gradient(90deg, #a1a3e8 0%, #675bcb 100%) !important;
 }
 
 @keyframes circleAnimation {

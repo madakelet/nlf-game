@@ -21,6 +21,7 @@ class MatchResource extends JsonResource
             'away_team' => TeamResource::make($this->awayTeam),
             'start_time' => $this->start_time,
             'stadium' => $this->stadium,
+            'final_score' => $this->final_score,
         ];
     }
 }
