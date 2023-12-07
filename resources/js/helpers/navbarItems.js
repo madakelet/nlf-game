@@ -1,7 +1,7 @@
 export const items = [
     {
         to: "/dashboard",
-        name: "dashboard"
+        name: "meccsek"
     },
     {
         to: "/tips",

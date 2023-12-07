@@ -6,11 +6,17 @@ export default function useMatch() {
     const matches = ref([]);
     const body = document.body;
     const html = document.documentElement;
+    const weeks = ref([]);
+    const currentWeek = ref("");
     const getMatches = async () => {
         loading.value = true;
         toggleLoadingClass();
         try {
-            const response = await axios.get("/api/matches");
+            const response = await axios.get("/api/matches", {
+                params: {
+                    week: currentWeek.value
+                }
+            });
             matches.value = response.data;
         } catch (err) {
             this.errors.value = err.response.data.errors;
@@ -28,10 +34,27 @@ export default function useMatch() {
             html.classList.remove("loading");
         }
     };
+    const getWeeks = async () => {
+        loading.value = true;
+        toggleLoadingClass();
+        try {
+            const response = await axios.get("/api/weeks");
+            weeks.value = response.data;
+            currentWeek.value = response.data[0].week;
+        } catch (err) {
+            this.errors.value = err.response.data;
+        } finally {
+            loading.value = false;
+            toggleLoadingClass();
+        }
+    };
     return {
         errors,
         loading,
         matches,
+        weeks,
+        currentWeek,
         getMatches,
+        getWeeks
     };
 }

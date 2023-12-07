@@ -11,6 +11,7 @@ class NflMatchSeeder extends Seeder
 {
     public $weekEventUrls = [];
     public $response = [];
+    
     public function run(): void
     {
         $this->getWeekEventUrls();
