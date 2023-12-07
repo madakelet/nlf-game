@@ -8,14 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
+library.add(fab, fas, far);
 
 import LoadingSpinner from "./components/LoadingSpinner.vue";
-library.add(fab, fas, far);
+import HeaderComponent from "./components/HeaderComponent.vue"
 
 const app = createApp({
     extends: App,
 });
 app.component("font-awesome-icon", FontAwesomeIcon)
     .component("loading-spinner", LoadingSpinner)
+    .component("header-component", HeaderComponent)
     .use(router)
     .mount("#app");
