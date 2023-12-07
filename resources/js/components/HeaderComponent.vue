@@ -25,8 +25,17 @@
                     >
                         {{ item.name }}</router-link
                     >
-                    <a class="nav-link" style="cursor: pointer;" @click="logout">
-                        <font-awesome-icon :icon="['fas', 'power-off']" color="#E3655B">
+                    <router-link class="nav-link" to="/users" v-if="isAdmin"
+                        >felhasználók</router-link
+                    >
+                    <router-link class="nav-link" to="/forms" v-if="isAdmin"
+                        >formok</router-link
+                    >
+                    <a class="nav-link" style="cursor: pointer" @click="logout">
+                        <font-awesome-icon
+                            :icon="['fas', 'power-off']"
+                            color="#E3655B"
+                        >
                         </font-awesome-icon>
                     </a>
                 </div>
@@ -38,13 +47,19 @@
 <script>
 import { items } from "../helpers/navbarItems";
 import useLogin from "../composables/login";
+import { onMounted } from "vue";
 export default {
     name: "HeaderComponent",
     setup() {
-        const { logout } = useLogin();
+        const { logout, isAdmin, getIsAdmin } = useLogin();
+        onMounted(() => {
+            getIsAdmin();
+        });
+
         return {
             items,
-            logout
+            logout,
+            isAdmin,
         };
     },
 };
