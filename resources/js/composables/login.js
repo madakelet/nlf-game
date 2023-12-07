@@ -21,10 +21,24 @@ export default function useLogin() {
         }
     };
 
+    const logout = async () => {
+        loading.value = true;
+        errors.value = [];
+        try {
+            await axios.post("/api/logout");
+            router.push({ name: "LoginPage" });
+        } catch (e) {
+            errors.value = e.response.data.errors;
+        } finally {
+            loading.value = false;
+        }
+    };
+
     return {
         loading,
         errors,
         form,
         login,
+        logout
     };
 }

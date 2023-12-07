@@ -15,6 +15,10 @@ Route::middleware('auth:sanctum')->get('/authenticate', function () {
     return true;
 });
 
+Route::middleware('is_admin')->get('/authenticate-admin', function () {
+    return true;
+});
+
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 

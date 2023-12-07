@@ -25,6 +25,10 @@
                     >
                         {{ item.name }}</router-link
                     >
+                    <a class="nav-link" style="cursor: pointer;" @click="logout">
+                        <font-awesome-icon :icon="['fas', 'power-off']" color="#E3655B">
+                        </font-awesome-icon>
+                    </a>
                 </div>
             </div>
             <form class="d-flex" role="search"></form>
@@ -33,11 +37,14 @@
 </template>
 <script>
 import { items } from "../helpers/navbarItems";
+import useLogin from "../composables/login";
 export default {
     name: "HeaderComponent",
     setup() {
+        const { logout } = useLogin();
         return {
             items,
+            logout
         };
     },
 };

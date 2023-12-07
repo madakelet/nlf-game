@@ -31,7 +31,7 @@ router.beforeEach(async (to, from) => {
         if (!isAuth) return "/";
     } else if (to.meta.requiresAdmin) {
         const isAdmin = await checkAdmin();
-        if (!isAdmin) return "/";
+        if (!isAdmin) return "/dashboard";
     }
 });
 

@@ -6,7 +6,7 @@
                     <loading-spinner />
                 </div>
                 <div class="col-lg-4 col-10 my-auto text-center" v-if="!loading">
-                    <img :src="`${baseUrl}/storage/images/nfl-transparent-logo-rgb.png`" class="img-fluid mb-3" height="auto" width="150px"/>
+                    <img src="https://nfldesigns.com/wp-content/uploads/2023/10/nfl-transparent-logo-rgb-150x150.png" class="img-fluid mb-3" height="auto" width="150px"/>
                     <div class="mb-3 mx-auto">
                         <input
                             type="text"
