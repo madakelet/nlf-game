@@ -1,11 +1,18 @@
 <template>
-    <div class="card text-start">
-        <div class="card-body">
-            <h4 class="card-title">{{ form.week }}</h4>
-            <p class="card-text">Body</p>
+    <div class="container my-2">
+        <div class="row form-component p-2">
+            <div class="col-md-4 col-6">
+                {{ form.week }}
+            </div>
+            <div class="col-md-4 col-3">
+                Kérdések száma: {{ form.questions.length }}
+            </div>
+            <div class="col-md-4 col-3 text-end">
+                <font-awesome-icon icon="edit" class="fa-icon mx-4"/>
+                <font-awesome-icon icon="trash" class="fa-icon"/>
+            </div>
         </div>
     </div>
-    
 </template>
 <script>
 export default {
@@ -15,6 +22,6 @@ export default {
             type: Object,
             required: true,
         },
-    }
-}
+    },
+};
 </script>

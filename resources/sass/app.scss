@@ -4,6 +4,7 @@
 @import "./login";
 @import "./header";
 @import "./matchComponent";
+@import "./formComponent";
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
@@ -102,4 +103,8 @@ button {
 
 .loading {
     height: 100%;
+}
+
+.fa-icon {
+    cursor: pointer;
 }

@@ -1,42 +1,35 @@
 import { ref } from "vue";
 import axios from "axios";
+import useDefault from "./default";
 export default function useMatch() {
     const errors = ref([]);
     const loading = ref(false);
     const matches = ref([]);
-    const body = document.body;
-    const html = document.documentElement;
     const weeks = ref([]);
     const currentWeek = ref("");
+    const { toggleLoadingClass } = useDefault();
+    
     const getMatches = async () => {
         loading.value = true;
-        toggleLoadingClass();
+        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/matches", {
                 params: {
-                    week: currentWeek.value
-                }
+                    week: currentWeek.value,
+                },
             });
             matches.value = response.data;
         } catch (err) {
             this.errors.value = err.response.data.errors;
         } finally {
             loading.value = false;
-            toggleLoadingClass();
+            toggleLoadingClass(loading.value);
         }
     };
-    const toggleLoadingClass = () => {
-        if (loading.value) {
-            body.classList.add("loading");
-            html.classList.add("loading");
-        } else {
-            body.classList.remove("loading");
-            html.classList.remove("loading");
-        }
-    };
+
     const getWeeks = async () => {
         loading.value = true;
-        toggleLoadingClass();
+        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/weeks");
             weeks.value = response.data;
@@ -45,7 +38,7 @@ export default function useMatch() {
             this.errors.value = err.response.data;
         } finally {
             loading.value = false;
-            toggleLoadingClass();
+            toggleLoadingClass(loading.value);
         }
     };
     return {
@@ -55,6 +48,6 @@ export default function useMatch() {
         weeks,
         currentWeek,
         getMatches,
-        getWeeks
+        getWeeks,
     };
 }
