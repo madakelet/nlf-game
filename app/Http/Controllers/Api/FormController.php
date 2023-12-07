@@ -11,6 +11,6 @@ class FormController extends Controller
 {
     public function index()
     {
-        return FormResource::collection(Form::all());
+        return FormResource::collection(Form::orderBy('week', 'desc')->get());
     }
 }

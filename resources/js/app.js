@@ -12,6 +12,7 @@ library.add(fab, fas, far);
 
 import LoadingSpinner from "./components/LoadingSpinner.vue";
 import HeaderComponent from "./components/HeaderComponent.vue"
+import FormComponent from "./components/FormComponent.vue"
 
 const app = createApp({
     extends: App,
@@ -19,5 +20,6 @@ const app = createApp({
 app.component("font-awesome-icon", FontAwesomeIcon)
     .component("loading-spinner", LoadingSpinner)
     .component("header-component", HeaderComponent)
+    .component("form-component", FormComponent)
     .use(router)
     .mount("#app");
