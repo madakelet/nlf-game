@@ -4,7 +4,7 @@ import axios from "axios";
 import { names } from "../helpers/nflNames";
 
 export default function useRegister() {
-    const { route } = useDefault();
+    const { route, redirect } = useDefault();
     const errors = ref([]);
     const loading = ref(false);
     const form = ref({
@@ -16,7 +16,7 @@ export default function useRegister() {
         loading.value = true;
         try {
             await axios.post(('/api/register'), form.value);
-            window.location.href = route("home");
+            redirect("DashBoard", "");
         } catch (e) {
             addShakeToRegister();
             errors.value = e.response.data.errors;
@@ -33,14 +33,14 @@ export default function useRegister() {
     const addShakeToRegister = () => {
         const register = document.querySelector(".register-form");
         register.classList.add("shake-element");
-        //register.classList.remove("shake-element");
+        register.classList.remove("shake-element");
     }
 
     return {
         errors,
         loading,
-        form,
         route,
+        form,
         placeHolderRandomName,
         register,
         randomName,

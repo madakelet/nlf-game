@@ -2,7 +2,7 @@
     <section id="register">
         <div class="container mx-4 mx-lg-0">
             <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-5 register-form p-5">
+                <div class="col-md-8 col-lg-5 register-form p-lg-5 p-3">
                     <div class="register-header">Regisztráció</div>
                     <div class="mb-4">
                         <input-component
@@ -46,7 +46,13 @@
                             :message="errors.password"
                         ></error-component>
                     </div>
-                    <select-team-component :team_id="form.team_id" v-model="form.team_id"></select-team-component>
+                    <select-team-component
+                        :team_id="form.team_id"
+                        v-model="form.team_id"
+                    ></select-team-component>
+                    <error-component
+                        :message="errors.team_id"
+                    ></error-component>
                     <div class="mb-4 text-center">
                         <button @click="register">regisztráció</button>
                     </div>
@@ -56,7 +62,7 @@
     </section>
 </template>
 <script>
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import useRegister from "../../composables/register";
 export default {
     name: "RegisterPage",
@@ -72,8 +78,15 @@ export default {
         onMounted(() => {
             randomName();
             form.value.email = route.query.email;
-            form.value.team_id = ''
+            form.value.team_id = "";
         });
+        watch(
+            form,
+            () => {
+                errors.value = [];
+            },
+            { deep: true }
+        );
         return {
             form,
             placeHolderRandomName,

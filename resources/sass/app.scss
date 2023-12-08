@@ -102,6 +102,21 @@ button {
     }
 }
 
+select {
+    color: white !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid white !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+    font-size: 1.2rem !important;
+    outline: none !important;
+    &:focus {
+        outline: 0;
+        box-shadow: none !important;
+    }
+}
 .loading {
     height: 100%;
 }
