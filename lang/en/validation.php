@@ -173,6 +173,18 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'token' => [
+            'exists' => 'Hibás vagy lejárt meghívó token.',
+        ],
+        'team_id' => [
+            'required' => 'Csapat kiválasztása kötelező.',
+        ],
+        'password' => [
+            'confirmed' => 'A jelszavak nem egyezek',
+        ],
+        'email' => [
+            'unique' => 'Ezzel az e-mail címmel már regisztráltak.'
+        ]
     ],
 
     /*

@@ -31,3 +31,4 @@ Route::get('/matches', [MatchController::class, 'index']);
 Route::get('/weeks', [WeekController::class, 'index']);
 
 Route::get('/is-admin', [UserController::class, 'isAdmin']);
+Route::post('/register', [UserController::class, 'register']);
