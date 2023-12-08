@@ -2,33 +2,45 @@
     <div class="mb-3">
         <select
             class="form-select"
-            aria-label="Default select example"
+            v-model="selectedTeamId"
+            @change="handleSelectChange"
         >
             <option selected>Válassz csapatot</option>
-            <option
-                v-for="team in teams"
-                :key="team.id"
-                :value="team.id"
-                >{{ team.name }} <img :src="team.logo_url" alt=""></option
-            >
+            <option v-for="team in teams" :key="team.id" :value="team.id">
+                {{ team.name }}
+            </option>
         </select>
+        <span></span>
     </div>
 </template>
 <script>
-import { onMounted } from "vue";
+import { onMounted, watch, ref } from "vue";
 import useTeam from "../composables/team";
 export default {
     name: "SelectTeamComponent",
     props: {
+        team_id: {
+            required: true,
+        },
     },
-    setup() {
+    setup(props, { emit }) {
+        const selectedTeamId = ref(props.team_id);
         const { teams, load } = useTeam();
         onMounted(async () => {
             await load();
         });
-        return {
-            teams,
+        watch(() => props.team_id, 
+        (newValue) => {
+            selectedTeamId.value = newValue
+        })
+        const handleSelectChange = () => {
+            emit("update:modelValue", selectedTeamId.value);
         };
-    }
-}
+        return {
+            selectedTeamId,
+            teams,
+            handleSelectChange
+        };
+    },
+};
 </script>
