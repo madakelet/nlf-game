@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import { onMounted, watch, ref } from "vue";
+import { watch, ref } from "vue";
 export default {
     name: "SelectWeekComponent",
     props: {
@@ -44,7 +44,6 @@ export default {
         const handleSelectChange = () => {
             emit("update:modelValue", selectedWeek.value);
         };
-
 
         return {
             selectedWeek,
