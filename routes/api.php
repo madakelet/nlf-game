@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MatchController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WeekController;
+use App\Http\Controllers\Api\InvitationController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -32,3 +33,5 @@ Route::get('/weeks', [WeekController::class, 'index']);
 
 Route::get('/is-admin', [UserController::class, 'isAdmin']);
 Route::post('/register', [UserController::class, 'register']);
+
+Route::post('/invitation', [InvitationController::class, 'create']);
