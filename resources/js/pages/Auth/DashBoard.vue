@@ -4,19 +4,12 @@
             <div class="col-md-10 col-12" align="center" v-if="loading">
                 <loading-spinner />
             </div>
+            <select-week-component
+                v-model="currentWeek"
+                :weeks="weeks"
+                :currentWeek.sync="currentWeek"
+            />
             <div class="col-lg-10 col-12" v-if="!loading">
-                <div class="mb-3">
-                    <select class="form-select" v-model="currentWeek">
-                        <option
-                            v-for="week in weeks"
-                            :key="week.id"
-                            :selected="week.is_current"
-                            :value="week.week"
-                        >
-                            {{ week.week }} <span v-if="week.is_current"> (current)</span>
-                        </option>
-                    </select>
-                </div>
                 <match-component
                     v-for="match in matches"
                     :key="match.id"
@@ -45,8 +38,8 @@ export default {
             await getWeeks();
             await getMatches();
         });
-        watch(currentWeek, async () => {
-            await getMatches();
+        watch(currentWeek, async (newVal, oldVal) => {
+            if (oldVal != "") await getMatches();
         });
         return {
             matches,

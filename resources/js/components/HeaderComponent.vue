@@ -18,20 +18,20 @@
             >
                 <div class="navbar-nav">
                     <router-link
-                        class="nav-link"
+                        class="nav-link mx-3"
                         v-for="item in items"
                         :key="item.name"
                         :to="item.to"
                     >
                         {{ item.name }}</router-link
                     >
-                    <router-link class="nav-link" to="/users" v-if="isAdmin"
+                    <router-link class="nav-link mx-3" to="/users" v-if="isAdmin"
                         >felhasználók</router-link
                     >
-                    <router-link class="nav-link" to="/forms" v-if="isAdmin"
+                    <router-link class="nav-link mx-3" to="/forms" v-if="isAdmin"
                         >formok</router-link
                     >
-                    <a class="nav-link" style="cursor: pointer" @click="logout">
+                    <a class="nav-link mx-3" style="cursor: pointer" @click="logout">
                         <font-awesome-icon
                             :icon="['fas', 'power-off']"
                             color="#E3655B"

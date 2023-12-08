@@ -1,7 +1,12 @@
 <template>
     <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-6">
+                
+            </div>
+        </div>
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-10" v-for="form in forms" :key="form.id">
+            <div class="col-lg-6 col-12" v-for="form in forms" :key="form.id">
                 <form-component :form="form"/>
             </div>
         </div>

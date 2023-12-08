@@ -16,6 +16,7 @@ import FormListComponent from "./components/FormListComponent.vue"
 import MatchComponent from "./components/MatchComponent.vue"
 import EditQuestionComponent from "./components/EditQuestionComponent.vue"
 import InputComponent from "./components/InputComponent.vue"
+import SelectWeekComponent from "./components/SelectWeekComponent.vue"
 const app = createApp({
     extends: App,
 });
@@ -26,5 +27,6 @@ app.component("font-awesome-icon", FontAwesomeIcon)
     .component("match-component", MatchComponent)
     .component("edit-question-component", EditQuestionComponent)
     .component("input-component", InputComponent)
+    .component("select-week-component", SelectWeekComponent)
     .use(router)
     .mount("#app");
