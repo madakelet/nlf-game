@@ -201,6 +201,7 @@ return [
     'attributes' => [
         'password' => 'jelszó',
         'email' => 'e-mail',
+        'name' => 'név'
     ],
 
 ];

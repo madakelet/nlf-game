@@ -2,6 +2,7 @@
 @import "variables";
 
 @import "./login";
+@import "./register";
 @import "./header";
 @import "./matchComponent";
 @import "./formComponent";
@@ -107,4 +108,22 @@ button {
 
 .fa-icon {
     cursor: pointer;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25%,
+    75% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.shake-element {
+    animation: shake 0.3s ease-in-out;
 }

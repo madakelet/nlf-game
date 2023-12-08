@@ -7,9 +7,8 @@
     <title>Meghívó</title>
 </head>
 <body>
-    <h1>Meghívó</h1>
     <p>Szia uram!</p>
-    <p>Az alábbi linken tudod elfogadni a meghívást:</p>
+    <p>Az alábbi linken tudod elfogadni a meghívást és regisztrálni:</p>
         <a href="{{ $url }}">Elfogadás</a>
     <p>Üdvözlettel,</p>
     <p>Jack és Telek</p>

@@ -33,7 +33,7 @@ class InvitationController extends Controller
 
     public function sendInvitation($invitation)
     {
-        $url = env('APP_URL') . '/register?token=' . $invitation->token;
+        $url = env('APP_URL') . '/register?token=' . $invitation->token . '&email=' . $invitation->email;
         Mail::to($invitation->email)->send(new InvitationMail($url));
     }
 }

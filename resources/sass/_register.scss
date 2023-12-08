@@ -1,0 +1,22 @@
+#register {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register-header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.register-form {
+    border-radius: 1rem;
+    border: $transparentBorder;
+    box-shadow: $transparentBoxShadow;
+    transition: $transition;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
