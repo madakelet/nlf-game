@@ -8,7 +8,7 @@ export default {
     name: "ErrorComponent",
     props: {
         message: {
-            type: String,
+            type: [String, Array],
         },
     },
 }

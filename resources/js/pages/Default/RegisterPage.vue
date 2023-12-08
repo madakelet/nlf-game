@@ -46,7 +46,7 @@
                             :message="errors.password"
                         ></error-component>
                     </div>
-                    <select-team-component :team_id="form.team_id"></select-team-component>
+                    <select-team-component :team_id="form.team_id" v-model="form.team_id"></select-team-component>
                     <div class="mb-4 text-center">
                         <button @click="register">regisztráció</button>
                     </div>
@@ -72,7 +72,7 @@ export default {
         onMounted(() => {
             randomName();
             form.value.email = route.query.email;
-            form.value.team_id = ""
+            form.value.team_id = ''
         });
         return {
             form,

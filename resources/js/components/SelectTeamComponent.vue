@@ -1,16 +1,24 @@
 <template>
     <div class="mb-3">
+        <label class="form-label">
+            csapat
+            <span>
+                <img
+                    v-if="selectedTeamId"
+                    :src="teams[selectedTeamId - 1].logo_url"
+                    class="img-fluid"
+                    width="40px"
+            /></span>
+        </label>
         <select
             class="form-select"
             v-model="selectedTeamId"
             @change="handleSelectChange"
         >
-            <option selected>Válassz csapatot</option>
             <option v-for="team in teams" :key="team.id" :value="team.id">
                 {{ team.name }}
             </option>
         </select>
-        <span></span>
     </div>
 </template>
 <script>
@@ -29,17 +37,19 @@ export default {
         onMounted(async () => {
             await load();
         });
-        watch(() => props.team_id, 
-        (newValue) => {
-            selectedTeamId.value = newValue
-        })
+        watch(
+            () => props.team_id,
+            (newValue) => {
+                selectedTeamId.value = newValue;
+            }
+        );
         const handleSelectChange = () => {
             emit("update:modelValue", selectedTeamId.value);
         };
         return {
             selectedTeamId,
             teams,
-            handleSelectChange
+            handleSelectChange,
         };
     },
 };
