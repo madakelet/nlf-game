@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('away_team_id')->references('id')->on('teams');
             $table->dateTime('start_time')->nullable();
             $table->string('week')->nullable();
+            $table->unsignedBigInteger('week_id')->nullable();
+            $table->foreign('week_id')->references('id')->on('weeks');
             $table->string('stadium')->nullable();
             $table->string('final_score')->nullable();
             $table->string('api_id')->unique()->nullable();

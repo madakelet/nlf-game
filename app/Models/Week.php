@@ -10,4 +10,9 @@ class Week extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function matches()
+    {
+        return $this->hasMany(NflMatch::class);
+    }
 }

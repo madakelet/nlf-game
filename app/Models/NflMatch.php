@@ -26,4 +26,9 @@ class NflMatch extends Model
     {
         return $this->belongsTo(Team::class, 'away_team_id');
     }
+
+    public function week()
+    {
+        return $this->belongsTo(Week::class);
+    }
 }

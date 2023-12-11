@@ -22,13 +22,5 @@ class DatabaseSeeder extends Seeder
             WeekSeeder::class,
             FormSeeder::class,
         ]);
-        
-        User::create([
-            'name' => 'admin',
-            'email' => 'asd@asd.com',
-            'password' => Hash::make('password'),
-            'is_admin' => true,
-            'team_id' => 14
-        ]);
     }
 }
