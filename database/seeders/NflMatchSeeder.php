@@ -76,10 +76,7 @@ class NflMatchSeeder extends Seeder
 
     public function getStadium(): string
     {
-        $venueData = file_get_contents($this->response['venues'][0]['$ref']);
-        $venueData = json_decode($venueData, true);
-
-        return $venueData['fullName'];
+        return $this->response['competitions']['0']['venue']['fullName'];
     }
 
     public function getFinalScore($startTime): string
