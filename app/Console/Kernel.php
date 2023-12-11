@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:update-scores')->weeklyOn(1, '07:00')->weeklyOn(2, '07:00')->weeklyOn(5, '07:00');
+        $schedule->command('app:set-current-week')->weeklyOn(4, '10:00');
     }
 
     /**

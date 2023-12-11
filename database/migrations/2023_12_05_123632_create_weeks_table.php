@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('week');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->boolean('is_current')->default(false);
             $table->integer('season');
             $table->integer('type');
             $table->timestamps();
