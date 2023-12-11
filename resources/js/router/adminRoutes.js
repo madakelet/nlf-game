@@ -17,4 +17,10 @@ export default [
         meta: { layout: "auth", requiresAdmin: true },
         component: () => import("../pages/Admin/EditForm.vue"),
     },
+    {
+        path: "/form/create",
+        name: "CreateForm",
+        meta: { layout: "auth", requiresAdmin: true },
+        component: () => import("../pages/Admin/CreateForm.vue"),
+    },
 ];
