@@ -10,7 +10,7 @@
                 v-for="week in weeks"
                 :key="week.id"
                 :selected="week.is_current"
-                :value="week.week"
+                :value="week.id"
             >
                 {{ week.week }} <span v-if="week.is_current"> (current)</span>
             </option>
@@ -26,16 +26,16 @@ export default {
             type: Array,
             required: true,
         },
-        currentWeek: {
-            type: String,
+        currentWeekId: {
+            type: [String, Number],
             required: true,
         },
     },
     setup(props, { emit }) {
-        const selectedWeek = ref(props.currentWeek);
+        const selectedWeek = ref(props.currentWeekId);
 
         watch(
-            () => props.currentWeek,
+            () => props.currentWeekId,
             (newValue) => {
                 selectedWeek.value = newValue;
             }

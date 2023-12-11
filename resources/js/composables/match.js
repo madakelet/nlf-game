@@ -6,7 +6,7 @@ export default function useMatch() {
     const loading = ref(false);
     const matches = ref([]);
     const weeks = ref([]);
-    const currentWeek = ref("");
+    const currentWeekId = ref("");
     const { toggleLoadingClass } = useDefault();
     
     const getMatches = async () => {
@@ -15,7 +15,7 @@ export default function useMatch() {
         try {
             const response = await axios.get("/api/matches", {
                 params: {
-                    week: currentWeek.value,
+                    week_id: currentWeekId.value,
                 },
             });
             matches.value = response.data;
@@ -33,7 +33,7 @@ export default function useMatch() {
         try {
             const response = await axios.get("/api/weeks");
             weeks.value = response.data;
-            currentWeek.value = response.data[0].week;
+            currentWeekId.value = response.data[0].id;
         } catch (err) {
             this.errors.value = err.response.data;
         } finally {
@@ -46,7 +46,7 @@ export default function useMatch() {
         loading,
         matches,
         weeks,
-        currentWeek,
+        currentWeekId,
         getMatches,
         getWeeks,
     };

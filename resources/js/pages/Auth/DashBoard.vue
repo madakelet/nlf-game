@@ -5,9 +5,9 @@
                 <loading-spinner />
             </div>
             <select-week-component
-                v-model="currentWeek"
+                v-model="currentWeekId"
                 :weeks="weeks"
-                :currentWeek.sync="currentWeek"
+                :currentWeekId.sync="currentWeekId"
             />
             <div class="col-lg-10 col-12" v-if="!loading">
                 <match-component
@@ -30,7 +30,7 @@ export default {
             matches,
             loading,
             erros,
-            currentWeek,
+            currentWeekId,
             getMatches,
             getWeeks,
         } = useMatch();
@@ -38,7 +38,7 @@ export default {
             await getWeeks();
             await getMatches();
         });
-        watch(currentWeek, async (newVal, oldVal) => {
+        watch(currentWeekId, async (newVal, oldVal) => {
             if (oldVal != "") await getMatches();
         });
         return {
@@ -46,7 +46,7 @@ export default {
             loading,
             erros,
             weeks,
-            currentWeek,
+            currentWeekId,
         };
     },
 };

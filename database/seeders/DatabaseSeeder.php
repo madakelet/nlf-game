@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            //TeamSeeder::class,
-            //NflMatchSeeder::class,
+            TeamSeeder::class,
+            NflMatchSeeder::class,
             QuestionTypeSeeder::class,
             WeekSeeder::class,
             FormSeeder::class,
+            DefaultUserSeeder::class,
         ]);
     }
 }
