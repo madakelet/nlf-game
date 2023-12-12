@@ -4,7 +4,7 @@ export default function useQuestion() {
     const questionTypes = ref([]);
     const loading = ref(false);
     const errors = ref([]);
-
+    const currentQuestionTypeId = ref(null);
     const loadQuestionTypes = async () => {
         loading.value = true;
         try {
@@ -21,6 +21,7 @@ export default function useQuestion() {
         questionTypes,
         loading,
         errors,
+        currentQuestionTypeId,
         loadQuestionTypes
     }
 }

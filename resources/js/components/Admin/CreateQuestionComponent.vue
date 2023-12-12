@@ -2,7 +2,7 @@
     <div class="create-question p-3">
         <div class="row my-3">
             <select-question-type-component
-                :question_type_id="question.question_type_id"
+                :currentQuestionTypeId="currentQuestionTypeId"
                 v-model="question.question_type_id"
             ></select-question-type-component>
         </div>
@@ -52,7 +52,7 @@ export default {
             currentWeekId,
             currentMatch,
         } = useMatch();
-        const { loadQuestionTypes, questionTypes } = useQuestion();
+        const { loadQuestionTypes, questionTypes, currentQuestionTypeId } = useQuestion();
         onMounted(async () => {
             await getWeeks();
             await getMatches();
@@ -67,13 +67,14 @@ export default {
         );
         return {
             weeks,
-            getWeeks,
             loading,
-            getMatches,
             matches,
+            questionTypes,
             currentWeekId,
             currentMatch,
-            questionTypes,
+            currentQuestionTypeId,
+            getWeeks,
+            getMatches,
         };
     },
 };

@@ -1,14 +1,17 @@
 <template>
     <div class="mb-3">
-        <label class="form-label">
-            kérdés típus
-        </label>
+        <label class="form-label"> kérdés típus </label>
         <select
             class="form-select"
-            v-model="select"
+            v-model="selectedQuestionTypeId"
             @change="handleSelectChange"
         >
-            <option v-for="question_type in questionTypes" :key="question_type.id" :value="question_type.id">
+            <option value="" disabled selected>választás</option>
+            <option
+                v-for="question_type in questionTypes"
+                :key="question_type.id"
+                :value="question_type.id"
+            >
                 {{ question_type.description }}
             </option>
         </select>
@@ -20,19 +23,19 @@ import useQuestion from "../composables/question";
 export default {
     name: "SelectQuestionTypeComponent",
     props: {
-        question_type_id: {
+        currentQuestionTypeId: {
             required: true,
         },
     },
     setup(props, { emit }) {
-        const selectedQuestionTypeId = ref(props.question_type_id);
+        const selectedQuestionTypeId = ref(props.currentQuestionTypeId);
         const { questionTypes, loadQuestionTypes } = useQuestion();
-        
+
         onMounted(async () => {
             await loadQuestionTypes();
         });
         watch(
-            () => props.question_type_id,
+            () => props.currentQuestionTypeId,
             (newValue) => {
                 selectedQuestionTypeId.value = newValue;
             }
@@ -46,5 +49,5 @@ export default {
             handleSelectChange,
         };
     },
-}
+};
 </script>
