@@ -1,7 +1,8 @@
 <template>
-    <div class="create-question">
+    <div class="create-question p-3">
         <div class="row">
             <div class="col-lg-4 col-5">
+                <label class="form-label">week</label>
                 <select-week-component
                     :weeks="weeks"
                     :currentWeekId="currentWeekId"
@@ -11,8 +12,8 @@
             <div class="col-lg-4 col-5">
                 <select-match-component
                     :matches="matches"
-                    :currentMatchId="currentMatchId"
-                    v-model="question.match_id"
+                    :currentMatch="currentMatch"
+                    v-model="question.match"
                 >
                     ></select-match-component
                 >
@@ -25,7 +26,7 @@
 </template>
 <script>
 import useMatch from "../../composables/match";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 export default {
     name: "CreateQuestionComponent",
     props: {
@@ -34,7 +35,7 @@ export default {
             required: true,
         },
     },
-    setup() {
+    setup(props) {
         const {
             weeks,
             getWeeks,
@@ -42,12 +43,20 @@ export default {
             getMatches,
             matches,
             currentWeekId,
-            currentMatchId,
+            currentMatch,
         } = useMatch();
+
         onMounted(async () => {
             await getWeeks();
             await getMatches();
         });
+        watch(
+            () => props.question.week_id,
+            async () => {
+                currentWeekId.value = props.question.week_id;
+                await getMatches();
+            }
+        );
         return {
             weeks,
             getWeeks,
@@ -55,7 +64,7 @@ export default {
             getMatches,
             matches,
             currentWeekId,
-            currentMatchId,
+            currentMatch,
         };
     },
 };

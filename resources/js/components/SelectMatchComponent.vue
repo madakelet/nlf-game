@@ -1,16 +1,29 @@
 <template>
     <div class="mb-3">
+        <label class="form-label"
+            >meccs
+            <span v-if="selectedMatch.home_team && selectedMatch.away_team" class="ms-2">
+                <img
+                    :src="selectedMatch.home_team.logo_url"
+                    class="img-fluid"
+                    width="20px"
+                />
+                vs
+                <img
+                    :src="selectedMatch.away_team.logo_url"
+                    class="img-fluid"
+                    width="20px"
+                />
+            </span>
+        </label>
         <select
             class="form-select"
             v-model="selectedMatch"
             @change="handleSelectChange"
             v-if="matches && matches.length"
         >
-            <option
-                v-for="match in matches"
-                :key="match.id"
-                :value="match.id"
-            >
+            <option value="" disabled selected>válassz meccset</option>
+            <option v-for="match in matches" :key="match.id" :value="match">
                 {{ match.home_team.name }} vs {{ match.away_team.name }}
             </option>
         </select>
@@ -25,16 +38,15 @@ export default {
             type: Array,
             required: true,
         },
-        currentMatchId: {
-            type: [String, Number],
+        currentMatch: {
+            type: [Object, String, Array],
             required: true,
         },
     },
     setup(props, { emit }) {
-        const selectedMatch = ref(props.currentMatchId);
-
+        const selectedMatch = ref(props.currentMatch);
         watch(
-            () => props.currentMatchId,
+            () => props.currentMatch,
             (newValue) => {
                 selectedMatch.value = newValue;
             }
@@ -49,5 +61,5 @@ export default {
             handleSelectChange,
         };
     },
-}
+};
 </script>

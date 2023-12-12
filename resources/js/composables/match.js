@@ -7,7 +7,7 @@ export default function useMatch() {
     const matches = ref([]);
     const weeks = ref([]);
     const currentWeekId = ref("");
-    const currentMatchId = ref("");
+    const currentMatch = ref({});
     const { toggleLoadingClass } = useDefault();
     
     const getMatches = async () => {
@@ -48,7 +48,7 @@ export default function useMatch() {
         matches,
         weeks,
         currentWeekId,
-        currentMatchId,
+        currentMatch,
         getMatches,
         getWeeks,
     };

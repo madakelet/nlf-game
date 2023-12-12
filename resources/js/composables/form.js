@@ -44,7 +44,6 @@ export default function useForm() {
     const addQuestionToArray = () => {
         questions.value.push({
             id: generateId(),
-            match_id: "",
             question: "",
         });
     };
@@ -55,9 +54,9 @@ export default function useForm() {
     };
 
     const generateId = () => {
-        return Math.random().toString(36).substr(2, 9);
+        return Date.now() + Math.floor(Math.random() * 1000);
     };
-    
+
     return {
         errors,
         loading,
