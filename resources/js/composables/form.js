@@ -6,6 +6,7 @@ export default function useForm() {
     const loading = ref(false);
     const forms = ref([]);
     const form = ref({});
+    const questions = ref([]);
     const { toggleLoadingClass, route } = useDefault();
 
     const getForms = async () => {
@@ -39,12 +40,23 @@ export default function useForm() {
             toggleLoadingClass(loading.value);
         }
     };
+
+    const addQuestionToArray = () => {
+        questions.value.push({});
+    };
+
+    const removeQuestionFromArray = (index) => {
+        questions.value.splice(index, 1);
+    };
     return {
         errors,
         loading,
         forms,
         form,
+        questions,
         getForms,
         getForm,
+        addQuestionToArray,
+        removeQuestionFromArray,
     };
 }
