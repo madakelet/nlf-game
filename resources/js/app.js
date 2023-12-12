@@ -18,6 +18,7 @@ import EditQuestionComponent from "./components/EditQuestionComponent.vue"
 import InputComponent from "./components/InputComponent.vue"
 import SelectWeekComponent from "./components/SelectWeekComponent.vue"
 import SelectTeamComponent from "./components/SelectTeamComponent.vue"
+import SelectMatchComponent from "./components/SelectMatchComponent.vue"
 import ErrorComponent from "./components/ErrorComponent.vue"
 import CreateQuestionComponent from "./components/Admin/CreateQuestionComponent.vue"
 const app = createApp({
@@ -32,6 +33,7 @@ app.component("font-awesome-icon", FontAwesomeIcon)
     .component("input-component", InputComponent)
     .component("select-week-component", SelectWeekComponent)
     .component("select-team-component", SelectTeamComponent)
+    .component("select-match-component", SelectMatchComponent)
     .component("error-component", ErrorComponent)
     .component("create-question-component", CreateQuestionComponent)
     .use(router)

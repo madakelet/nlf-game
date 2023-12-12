@@ -42,12 +42,22 @@ export default function useForm() {
     };
 
     const addQuestionToArray = () => {
-        questions.value.push({});
+        questions.value.push({
+            id: generateId(),
+            match_id: "",
+            question: "",
+        });
     };
 
-    const removeQuestionFromArray = (index) => {
+    const removeQuestionFromArray = (question) => {
+        const index = questions.value.indexOf(question);
         questions.value.splice(index, 1);
     };
+
+    const generateId = () => {
+        return Math.random().toString(36).substr(2, 9);
+    };
+    
     return {
         errors,
         loading,

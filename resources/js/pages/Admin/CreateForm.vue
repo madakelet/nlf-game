@@ -13,11 +13,11 @@
         <div class="row">
             <div
                 class="col-lg-6 col-10"
-                v-for="(question, index) in questions"
-                :key="index"
+                v-for="(question) in questions"
+                :key="question.id"
             >
                 <create-question-component :question="question">
-                    <font-awesome-icon icon="trash" class="fa-icon" @click="removeQuestionFromArray(index)"/>
+                    <font-awesome-icon icon="trash" class="fa-icon" @click="removeQuestionFromArray(question)"/>
                 </create-question-component>
             </div>
         </div>
