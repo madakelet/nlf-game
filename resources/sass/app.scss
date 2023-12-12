@@ -102,6 +102,14 @@ button {
         scale: 1.03;
     }
 }
+.danger-button {
+    background-color: #da8689 !important;
+    transition: all ease-in-out 0.1s;
+    &:hover {
+        background-color: #a04b4e !important;
+        transition: all ease-in-out 0.1s;
+    }
+}
 
 select {
     color: white !important;

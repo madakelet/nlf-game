@@ -1,12 +1,14 @@
 <template>
     <div class="create-question p-3">
         <div class="row my-3">
-            <select-question-type-component
-                :currentQuestionTypeId="currentQuestionTypeId"
-                v-model="question.question_type_id"
-            ></select-question-type-component>
+            <div class="col-lg-8 col-10">
+                <select-question-type-component
+                    :currentQuestionTypeId="currentQuestionTypeId"
+                    v-model="question.question_type_id"
+                ></select-question-type-component>
+            </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="question.question_type_id != null">
             <div class="col-lg-4 col-5">
                 <label class="form-label">week</label>
                 <select-week-component
@@ -24,9 +26,9 @@
                     ></select-match-component
                 >
             </div>
-            <div class="col-1 my-auto">
-                <slot></slot>
-            </div>
+        </div>
+        <div class="row justify-content-center">
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -52,7 +54,8 @@ export default {
             currentWeekId,
             currentMatch,
         } = useMatch();
-        const { loadQuestionTypes, questionTypes, currentQuestionTypeId } = useQuestion();
+        const { loadQuestionTypes, questionTypes, currentQuestionTypeId } =
+            useQuestion();
         onMounted(async () => {
             await getWeeks();
             await getMatches();

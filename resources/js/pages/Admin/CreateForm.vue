@@ -18,7 +18,11 @@
                     :key="question.id"
                 >
                     <create-question-component :question="question">
-                        <font-awesome-icon icon="trash" class="fa-icon" @click="removeQuestionFromArray(question)"/>
+                        <div class="col-lg-3 col-6 text-center">
+                            <button class="danger-button" @click="removeQuestionFromArray(question)">
+                                törlés
+                            </button>
+                        </div>
                     </create-question-component>
                 </div>
             </div>
