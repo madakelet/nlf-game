@@ -25,6 +25,9 @@
                         </div>
                     </create-question-component>
                 </div>
+                <div class="col-lg-3 col-6 text-center" v-if="questions.length > 0">
+                    <button class="success-button" @click="submitForm">form létrehozása</button>  
+                </div>
             </div>
         </div>
     </section>

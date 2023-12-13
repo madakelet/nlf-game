@@ -5,8 +5,7 @@
         </div>
         <div class="row match-component py-2">
             <div class="col-1 my-auto text-center">
-                <img :src="match.home_team.logo_url" class="img-fluid" v-if="imagesLoaded"/>
-                <loading-spinner v-else />
+                <img :src="match.home_team.logo_url" class="img-fluid" />
             </div>
             <div class="col-4 my-auto text-center">
                 <div class="team-name">
@@ -28,14 +27,13 @@
                 </small>
             </div>
             <div class="col-1 my-auto text-center">
-                <img :src="match.away_team.logo_url" class="img-fluid" v-if="imagesLoaded"/>
-                <loading-spinner v-else />
+                <img :src="match.away_team.logo_url" class="img-fluid" />
             </div>
         </div>
     </div>
 </template>
 <script>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 
 export default {
     name: "MatchComponent",

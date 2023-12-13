@@ -8,7 +8,17 @@
                 ></select-question-type-component>
             </div>
         </div>
-        <div class="row" v-if="question.question_type_id != null">
+        <div class="row mb-4" v-if="question.question_type_id != null">
+            <div class="col-lg-8 col-10">
+                <input-component 
+                    label="kérdés"
+                    type="text"
+                    :hasLabel="true"
+                    v-model="question.question"
+                ></input-component>
+            </div>
+        </div>
+        <div class="row" v-if="question.question_type_id != null && question.question_type_id != 3">
             <div class="col-lg-4 col-5">
                 <label class="form-label">week</label>
                 <select-week-component
@@ -66,6 +76,20 @@ export default {
             async () => {
                 currentWeekId.value = props.question.week_id;
                 await getMatches();
+            }
+        );
+        watch(
+            () => props.question.question_type_id,
+            (newVal) => {
+                if (newVal == 1) {
+                    props.question.question = "Ki nyeri a meccset?";
+                } else if (newVal == 2) {
+                    props.question.question = "Mi lesz a meccs pontos végeredménye? (pl: 42-11)";
+                } else if (newVal == 3) {
+                    props.question.question = "Legkevesebbet pontot szerző csapat";
+                } else if(newVal == 4) {
+                    props.question.question = "";
+                }
             }
         );
         return {
