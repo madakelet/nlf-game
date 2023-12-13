@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row my-3">
                 <div class="col-lg-2 col-6 my-auto">
-                    <div class="fs-2">felhasználók</div>
+                    <div class="fs-2">meghívók</div>
                 </div>
                 <div class="col-lg-2 col-6 my-auto">
                     <button
@@ -13,7 +13,7 @@
                     </button>
                 </div>
                 <div class="col-lg-4 col-10">
-                    <alert-component message="sikeresen elküldtük a megihvót" v-if="success"></alert-component>
+                    <alert-component message="sikeresen elküldtük a meghívót" v-if="success"></alert-component>
                 </div>
             </div>
             <div class="row my-3" v-if="toggleSendInvitation">
@@ -35,11 +35,33 @@
                     <loading-spinner></loading-spinner>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <table-component
+                        :data="invitations"
+                        :columns="invitationCols"
+                        :shouldDelete="true"
+                    ></table-component>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-2 col-6 my-auto">
+                    <div class="fs-2">felhasználók</div>
+                </div>
+                <div class="col-12">
+                    <table-component
+                        :data="users"
+                        :columns="userCols"
+                        :shouldDelete="true"
+                    ></table-component>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 <script>
-import { ref, onMounted, watch } from "vue";
+import { onMounted, watch } from "vue";
+import { userCols, invitationCols } from "../../helpers/usersPageColumns";
 import useUser from "../../composables/user";
 export default {
     name: "Users",
@@ -51,11 +73,14 @@ export default {
             errors,
             success,
             toggleSendInvitation,
+            invitations,
+            loadInvitations,
             sendInvitation,
             getUsers,
         } = useUser();
         onMounted(async () => {
             await getUsers();
+            await loadInvitations();
         });
 
         watch(email, () => {
@@ -67,8 +92,11 @@ export default {
             email,
             loading,
             errors,
+            invitations,
             success,
             sendInvitation,
+            userCols, 
+            invitationCols,
         };
     },
 };

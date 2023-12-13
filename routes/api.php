@@ -40,6 +40,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::get('/users', [UserController::class, 'index']);
 
 Route::post('/invitation', [InvitationController::class, 'create']);
+Route::get('/invitations', [InvitationController::class, 'index']);
 
 Route::get('/teams', [TeamController::class, 'index']);
 

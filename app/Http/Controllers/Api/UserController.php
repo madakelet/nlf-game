@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Resources\UserResource;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +49,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return User::all();
+        return UserResource::collection(User::all());
     }
 
 }

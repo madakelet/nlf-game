@@ -23,6 +23,8 @@ import SelectQuestionTypeComponent from "./components/SelectQuestionTypeComponen
 import ErrorComponent from "./components/ErrorComponent.vue"
 import AlertComponent from "./components/AlertComponent.vue"
 import CreateQuestionComponent from "./components/Admin/CreateQuestionComponent.vue"
+import TableComponent from "./components/TableComponent.vue"
+
 const app = createApp({
     extends: App,
 });
@@ -40,5 +42,6 @@ app.component("font-awesome-icon", FontAwesomeIcon)
     .component("error-component", ErrorComponent)
     .component("alert-component", AlertComponent)
     .component("create-question-component", CreateQuestionComponent)
+    .component("table-component", TableComponent)
     .use(router)
     .mount("#app");
