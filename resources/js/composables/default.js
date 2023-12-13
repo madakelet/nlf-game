@@ -11,20 +11,10 @@ export default function useDefault() {
         if (id === null) router.push({ name: pathName });
         else router.push({ name: pathName, params: { id } });
     };
-    const toggleLoadingClass = (loading) => {
-        if (loading) {
-            body.classList.add("loading");
-            html.classList.add("loading");
-        } else {
-            body.classList.remove("loading");
-            html.classList.remove("loading");
-        }
-    };
     return {
         baseUrl,
         router,
         route,
         redirect,
-        toggleLoadingClass,
     };
 }

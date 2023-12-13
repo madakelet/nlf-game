@@ -1,21 +1,23 @@
 <template>
-    <div class="container">
-        <div class="row my-3">
-            <div class="col-lg-2 col-4 my-auto">
-                <div class="fs-2">
-                    formok
+    <section id="forms">
+        <div class="container">
+            <div class="row my-3">
+                <div class="col-lg-2 col-4 my-auto">
+                    <div class="fs-2">
+                        formok
+                    </div>
+                </div>
+                <div class="col-lg-2 col-3 my-auto">
+                    <button @click="redirect('CreateForm')">új form</button>
                 </div>
             </div>
-            <div class="col-lg-2 col-3 my-auto">
-                <button @click="redirect('CreateForm')">új form</button>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-12" v-for="form in forms" :key="form.id">
+                    <form-component :form="form"/>
+                </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-12" v-for="form in forms" :key="form.id">
-                <form-component :form="form"/>
-            </div>
-        </div>
-    </div>
+    </section>
 </template>
 <script>
 import { onMounted } from 'vue';

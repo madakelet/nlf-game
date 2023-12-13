@@ -21,6 +21,7 @@ import SelectTeamComponent from "./components/SelectTeamComponent.vue"
 import SelectMatchComponent from "./components/SelectMatchComponent.vue"
 import SelectQuestionTypeComponent from "./components/SelectQuestionTypeComponent.vue"
 import ErrorComponent from "./components/ErrorComponent.vue"
+import AlertComponent from "./components/AlertComponent.vue"
 import CreateQuestionComponent from "./components/Admin/CreateQuestionComponent.vue"
 const app = createApp({
     extends: App,
@@ -37,6 +38,7 @@ app.component("font-awesome-icon", FontAwesomeIcon)
     .component("select-match-component", SelectMatchComponent)
     .component("select-question-type-component", SelectQuestionTypeComponent)
     .component("error-component", ErrorComponent)
+    .component("alert-component", AlertComponent)
     .component("create-question-component", CreateQuestionComponent)
     .use(router)
     .mount("#app");

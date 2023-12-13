@@ -142,6 +142,10 @@ label {
     cursor: pointer;
 }
 
+#forms, #users {
+    min-height: 100dvh;
+}
+
 @keyframes shake {
     0%,
     100% {

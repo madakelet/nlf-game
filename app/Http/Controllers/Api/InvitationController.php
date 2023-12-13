@@ -36,4 +36,9 @@ class InvitationController extends Controller
         $url = env('APP_URL') . '/register?token=' . $invitation->token . '&email=' . $invitation->email;
         Mail::to($invitation->email)->send(new InvitationMail($url));
     }
+
+    public function index()
+    {
+        return Invitation::all();
+    }
 }

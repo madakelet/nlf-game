@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\InvitationController;
 use App\Http\Controllers\Api\QuestionTypeController;
 use App\Http\Controllers\Api\TeamController;
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,6 +37,7 @@ Route::get('/weeks', [WeekController::class, 'index']);
 
 Route::get('/is-admin', [UserController::class, 'isAdmin']);
 Route::post('/register', [UserController::class, 'register']);
+Route::get('/users', [UserController::class, 'index']);
 
 Route::post('/invitation', [InvitationController::class, 'create']);
 

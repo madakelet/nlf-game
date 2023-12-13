@@ -45,4 +45,10 @@ class UserController extends Controller
         $invitation = Invitation::where('email', $email)->first();
         $invitation->delete();
     }
+
+    public function index()
+    {
+        return User::all();
+    }
+
 }

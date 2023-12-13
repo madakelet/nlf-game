@@ -7,6 +7,7 @@
             :placeholder="placeholder"
             :value="modelValue"
             @input="updateModelValue"
+            :disabled="loading"
         />
     </div>
 </template>
@@ -37,6 +38,11 @@ export default {
         },
         modelValue: {
             required: true,
+        },
+        loading: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     setup(props, { emit }) {

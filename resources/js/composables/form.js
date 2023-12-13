@@ -9,11 +9,10 @@ export default function useForm() {
         week: "",
         questions: [],
     });
-    const { toggleLoadingClass, route, router } = useDefault();
+    const { route, router } = useDefault();
 
     const getForms = async () => {
         loading.value = true;
-        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/forms");
             forms.value = response.data;
@@ -21,13 +20,11 @@ export default function useForm() {
             this.errors.value = err.response.data.errors;
         } finally {
             loading.value = false;
-            toggleLoadingClass(loading.value);
         }
     };
     const getForm = async () => {
         loading.value = true;
         errors.value = [];
-        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/form", {
                 params: {
@@ -39,7 +36,6 @@ export default function useForm() {
             errors.value = err.response.data.errors;
         } finally {
             loading.value = false;
-            toggleLoadingClass(loading.value);
         }
     };
 
