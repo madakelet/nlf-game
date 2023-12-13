@@ -53,7 +53,7 @@ export default {
         );
 
         const handleSelectChange = () => {
-            emit("update:modelValue", selectedMatch.value);
+            emit("update:modelValue", selectedMatch.value.id);
         };
 
         return {

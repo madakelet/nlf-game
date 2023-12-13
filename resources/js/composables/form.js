@@ -5,8 +5,10 @@ export default function useForm() {
     const errors = ref([]);
     const loading = ref(false);
     const forms = ref([]);
-    const form = ref({});
-    const questions = ref([]);
+    const form = ref({
+        week: "",
+        questions: [],
+    });
     const { toggleLoadingClass, route } = useDefault();
 
     const getForms = async () => {
@@ -42,30 +44,42 @@ export default function useForm() {
     };
 
     const addQuestionToArray = () => {
-        questions.value.push({
+        form.value.questions.push({
             id: generateId(),
             question: "",
         });
     };
 
     const removeQuestionFromArray = (question) => {
-        const index = questions.value.indexOf(question);
-        questions.value.splice(index, 1);
+        const index = form.value.questions.indexOf(question);
+        form.value.questions.splice(index, 1);
     };
 
     const generateId = () => {
         return Date.now() + Math.floor(Math.random() * 1000);
     };
 
+    const createForm = async () => {
+        loading.value = true;
+        errors.value = [];
+        try {
+            const response = await axios.post("/api/form", form.value);
+            console.log(response.data);
+        } catch (err) {
+            errors.value = err.response.data.errors;
+        } finally {
+            loading.value = false;
+        }
+    };
     return {
         errors,
         loading,
         forms,
         form,
-        questions,
         getForms,
         getForm,
         addQuestionToArray,
         removeQuestionFromArray,
+        createForm,
     };
 }

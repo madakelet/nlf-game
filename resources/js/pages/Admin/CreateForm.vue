@@ -12,9 +12,17 @@
                 </div>
             </div>
             <div class="row mt-5 justify-content-center">
+                <div class="col-lg-4 col-8 mb-5">
+                    <input-component
+                        label="form neve"
+                        type="text"
+                        :hasLabel="true"
+                        v-model="form.week"
+                    ></input-component>
+                </div>
                 <div
                     class="col-lg-10 col-12"
-                    v-for="(question) in questions"
+                    v-for="(question) in form.questions"
                     :key="question.id"
                 >
                     <create-question-component :question="question">
@@ -25,8 +33,8 @@
                         </div>
                     </create-question-component>
                 </div>
-                <div class="col-lg-3 col-6 text-center" v-if="questions.length > 0">
-                    <button class="success-button" @click="submitForm">form létrehozása</button>  
+                <div class="col-lg-3 col-6 text-center" v-if="form.questions.length > 0">
+                    <button class="success-button" @click="createForm">form létrehozása</button>  
                 </div>
             </div>
         </div>
@@ -37,11 +45,12 @@ import useForm from "../../composables/form";
 export default {
     name: "CreateForm",
     setup() {
-        const { questions, addQuestionToArray, removeQuestionFromArray } = useForm();
+        const { form, addQuestionToArray, removeQuestionFromArray, createForm } = useForm();
         return {
-            questions,
+            form,
             addQuestionToArray,
             removeQuestionFromArray,
+            createForm
         };
     },
 };

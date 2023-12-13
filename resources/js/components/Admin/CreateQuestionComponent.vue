@@ -31,7 +31,7 @@
                 <select-match-component
                     :matches="matches"
                     :currentMatch="currentMatch"
-                    v-model="question.match"
+                    v-model="question.nfl_match_id"
                 >
                     ></select-match-component
                 >
