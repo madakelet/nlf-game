@@ -44,26 +44,8 @@ export default {
         },
     },
     setup(props) {
-        const imagesLoaded = ref(false);
-        const checkIfImagesLoaded = () => {
-            const imgHome = new Image();
-            imgHome.src = props.match.home_team.logo_url;
-            const imgAway = new Image();
-            imgAway.src = props.match.away_team.logo_url;
-            imgHome.onload = () => {
-                imgAway.onload = () => {
-                    console.log("loaded");
-                    imagesLoaded.value = true;
-                };
-            };
-        };
-
-        onMounted(() => {
-            checkIfImagesLoaded();
-        });
-        return {
-            imagesLoaded,
-        };
+        onMounted(() => {});
+        return {};
     },
 };
 </script>

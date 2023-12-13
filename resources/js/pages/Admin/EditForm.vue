@@ -1,20 +1,22 @@
 <template>
-    <div class="container p-2">
-        <div class="row justify-content-center">
-            <div class="col-8 form-title">
-                {{ form.week }}
-            </div>
-            <div
-                class="col-lg-8 col-10"
-                v-for="question in form.questions"
-                :key="question.id"
-            >
-                <edit-question-component
-                    :question="question"
-                ></edit-question-component>
+    <section id="edit-form">
+        <div class="container p-2">
+            <div class="row justify-content-center">
+                <div class="col-8 form-title">
+                    {{ form.week }}
+                </div>
+                <div
+                    class="col-lg-8 col-10"
+                    v-for="question in form.questions"
+                    :key="question.id"
+                >
+                    <edit-question-component
+                        :question="question"
+                    ></edit-question-component>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 <script>
 import { onMounted } from "vue";

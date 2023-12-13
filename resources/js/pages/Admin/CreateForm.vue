@@ -1,5 +1,5 @@
 <template>
-    <section id="create-form">
+    <section id="create-form" class="my-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-5">
@@ -22,7 +22,7 @@
                 </div>
                 <div
                     class="col-lg-10 col-12"
-                    v-for="(question) in form.questions"
+                    v-for="(question) in form.questions.slice().reverse()"
                     :key="question.id"
                 >
                     <create-question-component :question="question">

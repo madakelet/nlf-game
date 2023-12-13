@@ -32,6 +32,7 @@ class FormController extends Controller
             foreach ($questions as $question) {
                 $form->questions()->create($question);
             }
+            return new FormResource($form);
         }
         catch (\Exception $e) {
             $form->delete();

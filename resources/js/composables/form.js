@@ -9,7 +9,7 @@ export default function useForm() {
         week: "",
         questions: [],
     });
-    const { toggleLoadingClass, route } = useDefault();
+    const { toggleLoadingClass, route, router } = useDefault();
 
     const getForms = async () => {
         loading.value = true;
@@ -44,10 +44,12 @@ export default function useForm() {
     };
 
     const addQuestionToArray = () => {
-        form.value.questions.push({
+        const question = {
             id: generateId(),
             question: "",
-        });
+        };
+
+        form.value.questions.push(question);
     };
 
     const removeQuestionFromArray = (question) => {
@@ -60,15 +62,21 @@ export default function useForm() {
     };
 
     const createForm = async () => {
-        loading.value = true;
-        errors.value = [];
-        try {
-            const response = await axios.post("/api/form", form.value);
-            console.log(response.data);
-        } catch (err) {
-            errors.value = err.response.data.errors;
-        } finally {
-            loading.value = false;
+        if (
+            confirm(
+                `Biztosan létre akarod hozni a formot? Jelenlegi kérdések száma: ${form.value.questions.length}. (Később szerkeszthető lesz a form ha valamit rosszul adtál meg.)`
+            )
+        ) {
+            loading.value = true;
+            errors.value = [];
+            try {
+                const response = await axios.post("/api/form", form.value);
+                router.push({ name: "EditForm", params: { id: response.data.id } });
+            } catch (err) {
+                errors.value = err.response.data.errors;
+            } finally {
+                loading.value = false;
+            }
         }
     };
     return {
