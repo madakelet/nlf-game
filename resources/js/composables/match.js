@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import axios from "axios";
-import useDefault from "./default";
 export default function useMatch() {
     const errors = ref([]);
     const loading = ref(false);
@@ -8,11 +7,9 @@ export default function useMatch() {
     const weeks = ref([]);
     const currentWeekId = ref("");
     const currentMatch = ref({});
-    const { toggleLoadingClass } = useDefault();
     
     const getMatches = async () => {
         loading.value = true;
-        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/matches", {
                 params: {
@@ -24,13 +21,11 @@ export default function useMatch() {
             this.errors.value = err.response.data.errors;
         } finally {
             loading.value = false;
-            toggleLoadingClass(loading.value);
         }
     };
 
     const getWeeks = async () => {
         loading.value = true;
-        toggleLoadingClass(loading.value);
         try {
             const response = await axios.get("/api/weeks");
             weeks.value = response.data;
@@ -39,7 +34,6 @@ export default function useMatch() {
             this.errors.value = err.response.data;
         } finally {
             loading.value = false;
-            toggleLoadingClass(loading.value);
         }
     };
     return {

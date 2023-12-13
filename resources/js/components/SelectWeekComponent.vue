@@ -1,5 +1,6 @@
 <template>
     <div class="mb-3">
+        <label for="week" class="form-label">week választása</label>
         <select
             class="form-select"
             v-model="selectedWeek"

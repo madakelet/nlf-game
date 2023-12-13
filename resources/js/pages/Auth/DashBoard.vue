@@ -1,23 +1,25 @@
 <template>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-12" align="center" v-if="loading">
-                <loading-spinner />
-            </div>
-            <select-week-component
-                v-model="currentWeekId"
-                :weeks="weeks"
-                :currentWeekId.sync="currentWeekId"
-            />
-            <div class="col-lg-10 col-12" v-if="!loading">
-                <match-component
-                    v-for="match in matches"
-                    :key="match.id"
-                    :match="match"
-                />
+    <section id="dashboard">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-12" align="center" v-if="loading">
+                    <loading-spinner />
+                </div>
+                <div class="col-lg-10 col-12" v-if="!loading">
+                    <select-week-component
+                        v-model="currentWeekId"
+                        :weeks="weeks"
+                        :currentWeekId.sync="currentWeekId"
+                    />
+                    <match-component
+                        v-for="match in matches"
+                        :key="match.id"
+                        :match="match"
+                    />
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 <script>
 import { onMounted, watch } from "vue";
