@@ -6,32 +6,21 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\App;
 
-class Question extends Model
+class Response extends Model
 {
     use HasFactory, SoftDeletes, HasUuids;
 
-    protected $guarded = [];
+    protected $fillable = ["user_id", "form_id"];
 
-    public function questionType()
+    public function user()
     {
-        return $this->belongsTo(QuestionType::class);
+        return $this->belongsTo(User::class);
     }
 
     public function form()
     {
         return $this->belongsTo(Form::class);
-    }
-
-    public function nflMatch()
-    {
-        return $this->belongsTo(NflMatch::class);
-    }
-
-    public function questionAnswers()
-    {
-        return $this->hasMany(QuestionAnswer::class);
     }
 
     public function userAnswers()
