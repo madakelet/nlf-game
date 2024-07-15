@@ -10,11 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create("invitations", function (Blueprint $table) {
+        Schema::create("question_answers", function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->string("email");
-            $table->string("token", 32)->unique();
-            $table->dateTime("expires_at");
+            $table->text("answer")->nullable();
+            $table->foreignUuid("question_id")->constrained("questions");
+            $table->boolean("is_correct")->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists("invitations");
+        Schema::dropIfExists("question_answers");
     }
 };
