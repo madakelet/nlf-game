@@ -13,7 +13,10 @@
                     </button>
                 </div>
                 <div class="col-lg-4 col-10">
-                    <alert-component message="sikeresen elküldtük a meghívót" v-if="success"></alert-component>
+                    <alert-component
+                        message="sikeresen elküldtük a meghívót"
+                        v-if="success"
+                    ></alert-component>
                 </div>
             </div>
             <div class="row my-3" v-if="toggleSendInvitation">
@@ -41,6 +44,7 @@
                         :data="invitations"
                         :columns="invitationCols"
                         :shouldDelete="true"
+                        :deleteItem="deleteInvitation"
                     ></table-component>
                 </div>
             </div>
@@ -77,6 +81,7 @@ export default {
             loadInvitations,
             sendInvitation,
             getUsers,
+            deleteInvitation,
         } = useUser();
         onMounted(async () => {
             await getUsers();
@@ -95,8 +100,9 @@ export default {
             invitations,
             success,
             sendInvitation,
-            userCols, 
+            userCols,
             invitationCols,
+            deleteInvitation,
         };
     },
 };
