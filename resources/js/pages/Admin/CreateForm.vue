@@ -10,6 +10,11 @@
                         új kérdés <font-awesome-icon icon="plus" />
                     </button>
                 </div>
+                <div>
+                    <div class="col-lg-2">
+                        
+                    </div>
+                </div>
             </div>
             <div class="row mt-5 justify-content-center">
                 <div class="col-lg-4 col-8 mb-5">
@@ -22,19 +27,27 @@
                 </div>
                 <div
                     class="col-lg-10 col-12"
-                    v-for="(question) in form.questions.slice().reverse()"
+                    v-for="question in form.questions.slice().reverse()"
                     :key="question.id"
                 >
                     <create-question-component :question="question">
                         <div class="col-lg-3 col-6 text-center">
-                            <button class="danger-button" @click="removeQuestionFromArray(question)">
+                            <button
+                                class="danger-button"
+                                @click="removeQuestionFromArray(question)"
+                            >
                                 törlés
                             </button>
                         </div>
                     </create-question-component>
                 </div>
-                <div class="col-lg-3 col-6 text-center" v-if="form.questions.length > 0">
-                    <button class="success-button" @click="createForm">form létrehozása</button>  
+                <div
+                    class="col-lg-3 col-6 text-center"
+                    v-if="form.questions.length > 0"
+                >
+                    <button class="success-button" @click="createForm">
+                        form létrehozása
+                    </button>
                 </div>
             </div>
         </div>
@@ -45,12 +58,17 @@ import useForm from "../../composables/form";
 export default {
     name: "CreateForm",
     setup() {
-        const { form, addQuestionToArray, removeQuestionFromArray, createForm } = useForm();
+        const {
+            form,
+            addQuestionToArray,
+            removeQuestionFromArray,
+            createForm,
+        } = useForm();
         return {
             form,
             addQuestionToArray,
             removeQuestionFromArray,
-            createForm
+            createForm,
         };
     },
 };
