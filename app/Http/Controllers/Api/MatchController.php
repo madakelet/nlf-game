@@ -12,9 +12,13 @@ class MatchController extends Controller
     public function index(Request $request)
     {
         $validated = $request->validate([
-            'week_id' => 'required|integer|exists:weeks,id'
+            "week_id" => "required|exists:weeks,id",
         ]);
-        $weekId =  $validated['week_id'];
-        return MatchResource::collection(NflMatch::where('week_id', $weekId)->orderBy('start_time', 'asc')->get());
+        $weekId = $validated["week_id"];
+        return MatchResource::collection(
+            NflMatch::where("week_id", $weekId)
+                ->orderBy("start_time", "asc")
+                ->get()
+        );
     }
 }

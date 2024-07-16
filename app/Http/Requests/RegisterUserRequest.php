@@ -22,11 +22,11 @@ class RegisterUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|confirmed',
+            "name" => "required|string",
+            "email" => "required|email|unique:users,email",
+            "password" => "required|string|confirmed",
             //'token' => 'required|string|exists:invitations,token',
-            'team_id' => 'required|integer|exists:teams,id',
+            "team_id" => "required|exists:teams,id",
         ];
     }
 }
