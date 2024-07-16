@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("responses", function (Blueprint $table) {
-            $table->uuid("id");
+            $table->uuid("id")->primary();
             $table->foreignUuid("user_id")->constrained("users");
             $table->foreignUuid("form_id")->constrained("forms");
             $table->timestamps();

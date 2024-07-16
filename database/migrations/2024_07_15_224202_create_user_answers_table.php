@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("user_answers", function (Blueprint $table) {
-            $table->foreignUuid("response_id")->constrained("responses");
             $table->foreignUuid("question_id")->constrained("questions");
+            $table->foreignUuid("response_id")->constrained("responses");
             $table
                 ->foreignUuid("question_answer_id")
                 ->constrained("question_answers")
